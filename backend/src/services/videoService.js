@@ -62,11 +62,21 @@ const getInfo = async (url) => {
     if (fs.existsSync(cookiePath)) {
       console.log("Cookie size:", fs.statSync(cookiePath).size);
     }
+    const { execSync } = require("child_process");
+
+    try {
+      console.log(
+        execSync("node_modules/yt-dlp-exec/bin/yt-dlp --version").toString(),
+      );
+    } catch (e) {
+      console.log(e.message);
+    }
     const info = await ytDlp(url, {
       dumpSingleJson: true,
       noWarnings: true,
       noCheckCertificate: true,
       cookies: path.join(process.cwd(), "cookies.txt"),
+      extractorArgs: "youtube:player_client=android",
     });
 
     const allFormats = info.formats || [];
