@@ -66,18 +66,39 @@ const getInfo = async (url) => {
 
     try {
       console.log(
-        execSync("node_modules/yt-dlp-exec/bin/yt-dlp --version").toString(),
+        execSync(
+          path.join(
+            process.cwd(),
+            "node_modules",
+            "yt-dlp-exec",
+            "bin",
+            "yt-dlp",
+          ) + " --version",
+        ).toString(),
       );
     } catch (e) {
       console.log(e.message);
     }
-    const info = await ytDlp(url, {
-      dumpSingleJson: true,
-      noWarnings: true,
-      noCheckCertificate: true,
-      cookies: path.join(process.cwd(), "cookies.txt"),
-      extractorArgs: "youtube:player_client=android",
-    });
+    const { execFileSync } = require("child_process");
+
+    const output = execFileSync(
+      path.join(process.cwd(), "node_modules", "yt-dlp-exec", "bin", "yt-dlp"),
+      [
+        url,
+        "--dump-single-json",
+        "--no-warnings",
+        "--no-check-certificate",
+        "--cookies",
+        cookiePath,
+        "--extractor-args",
+        "youtube:player_client=android",
+      ],
+      {
+        encoding: "utf8",
+      },
+    );
+
+    const info = JSON.parse(output);
 
     const allFormats = info.formats || [];
     const videoFormats = allFormats.filter(
@@ -166,7 +187,12 @@ const getInfo = async (url) => {
     cache.set(url, metadata);
     return metadata;
   } catch (error) {
-    logger.error("yt-dlp metadata error:", error);
+    console.log("============== ERROR ==============");
+    console.log("message:", error.message);
+    console.log("stderr:", error.stderr);
+    console.log("stdout:", error.stdout);
+    console.log("stack:", error.stack);
+    console.log("==================================");
 
     let message = "Failed to fetch video info";
     const stderr = error.stderr || "";
