@@ -1,0 +1,227 @@
+/* Overlay */
+.about-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 600;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+/* Card */
+.about-card {
+  background: var(--surface);
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  max-width: 440px;
+  width: 100%;
+  padding: 2rem 1.5rem 1.5rem;
+  position: relative;
+  border: 1px solid var(--border);
+  animation: slideUp 0.3s ease;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--surface-hover);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+.about-close:hover {
+  background: var(--border);
+  color: var(--text);
+  transform: rotate(90deg);
+}
+
+/* Header */
+.about-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.about-logo {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 0.75rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.about-header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.15rem;
+  color: var(--text);
+}
+
+.about-version {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Section */
+.about-section {
+  margin-bottom: 1.25rem;
+}
+
+.about-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-section-title span {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+/* Animated icon wrapper */
+.about-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  flex-shrink: 0;
+}
+
+.about-icon-wrapper:hover {
+  transform: scale(1.15) rotate(-8deg);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Section-specific colors */
+.dev-icon {
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+}
+.frontend-icon {
+  background: linear-gradient(135deg, #00b894, #55efc4);
+}
+.backend-icon {
+  background: linear-gradient(135deg, #0984e3, #74b9ff);
+}
+.database-icon {
+  background: linear-gradient(135deg, #e17055, #fab1a0);
+}
+.tools-icon {
+  background: linear-gradient(135deg, #fdcb6e, #ffeaa7);
+}
+
+/* Developer info */
+.about-dev-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+  margin-left: 3rem;
+}
+
+.about-dev-role {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-left: 3rem;
+}
+
+/* Tech tags */
+.about-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-left: 3rem;
+}
+
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+
+.tech-tag:hover {
+  transform: scale(1.05);
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tech-tag svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* Footer */
+.about-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.about-heart {
+  color: var(--secondary);
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.15);
+  }
+}

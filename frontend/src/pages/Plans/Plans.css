@@ -1,0 +1,330 @@
+.plans-page {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem 3rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+}
+
+.error-banner {
+  background: var(--danger);
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  max-width: 600px;
+  margin: 0 auto 1rem;
+}
+
+.plans-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.plans-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+}
+
+.plans-header p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.current-plan-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--accent);
+  color: var(--black);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ===== Horizontal Scroll Container (Mobile) ===== */
+.plans-scroll-container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+  padding-top: 4px;
+  margin: 0 -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.plans-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== Plans Grid ===== */
+.plans-grid {
+  display: flex;
+  gap: 1rem;
+}
+
+/* 2 columns on medium screens */
+@media (min-width: 640px) and (max-width: 867px) {
+  .plans-scroll-container {
+    overflow-x: visible;
+    scroll-snap-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* 3 columns on large screens */
+@media (min-width: 868px) {
+  .plans-scroll-container {
+    overflow-x: visible;
+    scroll-snap-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* ===== Plan Card ===== */
+.plan-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  position: relative;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s,
+    border-color 0.25s;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  flex: 0 0 280px;
+  scroll-snap-align: center;
+}
+
+.plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+.plan-card.current {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(21, 94, 228, 0.1);
+}
+
+.plan-card.featured {
+  box-shadow: 0 4px 20px rgba(197, 0, 54, 0.1);
+}
+
+/* Plan‑specific glow borders */
+.plan-card.free {
+  border-top: 4px solid var(--primary);
+  box-shadow: 0 4px 16px rgba(21, 94, 228, 0.15);
+}
+
+.plan-card.bronze {
+  border-top: 4px solid #cd7f32;
+  box-shadow: 0 4px 16px rgba(205, 127, 50, 0.2);
+}
+
+.plan-card.silver {
+  border-top: 4px solid #a0a0a0;
+  box-shadow: 0 4px 16px rgba(160, 160, 160, 0.2);
+}
+
+.plan-card.gold {
+  border-top: 4px solid #ffd700;
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.25);
+}
+
+.plan-card.diamond {
+  border-top: 4px solid #00bfff;
+  box-shadow: 0 4px 16px rgba(0, 191, 255, 0.2);
+}
+
+.plan-card.ultimate {
+  border-top: 4px solid var(--secondary);
+  box-shadow: 0 4px 16px rgba(197, 0, 54, 0.2);
+}
+
+/* Tags */
+.current-tag,
+.featured-tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.25rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.current-tag {
+  background: var(--primary);
+  color: white;
+}
+
+.featured-tag {
+  background: var(--secondary);
+  color: white;
+}
+
+/* Plan Name */
+.plan-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Price */
+.plan-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+.plan-price .free {
+  font-size: 2.2rem;
+  color: var(--primary);
+}
+
+.plan-price .currency {
+  font-size: 1.4rem;
+  vertical-align: super;
+  margin-right: 2px;
+}
+
+.plan-price .amount {
+  font-size: 2.8rem;
+}
+
+/* Discount row */
+.plan-discount-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.discount-badge {
+  background: var(--success);
+  color: white;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.plan-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Features */
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  text-align: left;
+}
+
+.plan-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.plan-features li:last-child {
+  border-bottom: none;
+}
+
+.plan-features svg {
+  color: var(--success);
+  flex-shrink: 0;
+}
+
+/* Button */
+.plan-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(21, 94, 228, 0.25);
+}
+
+.plan-btn:hover {
+  background: var(--primary-hover);
+}
+
+.plan-btn:active {
+  transform: scale(0.97);
+}
+
+.plan-btn.current-btn {
+  background: var(--surface-hover);
+  color: var(--text-muted);
+  cursor: default;
+  box-shadow: none;
+}
+
+.plan-btn.current-btn:hover {
+  background: var(--surface-hover);
+}
+
+.plan-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

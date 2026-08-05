@@ -1,0 +1,104 @@
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.dialog-content {
+  background: var(--surface);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  max-width: 380px;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  position: relative;
+  text-align: center;
+  animation: dialogSlideUp 0.3s ease;
+  border: 2px solid var(--border);
+}
+
+@keyframes dialogSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dialog-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+.dialog-close:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+/* icon circle */
+.dialog-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 2rem;
+}
+
+.dialog-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.dialog-message {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.dialog-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+  color: white;
+  background: var(--primary);
+}
+.dialog-action-btn:active {
+  transform: scale(0.96);
+}
+.dialog-action-btn:hover {
+  background: var(--primary-hover);
+}

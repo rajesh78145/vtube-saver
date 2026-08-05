@@ -1,0 +1,30 @@
+/* Reuse the same structure as Login – with minor additions */
+.auth-success {
+  color: var(--success);
+  font-size: 0.85rem;
+  text-align: left;
+  margin-top: -0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.auth-btn.secondary {
+  background: var(--bg);
+  color: var(--text);
+  border: 2px solid var(--border);
+  margin-top: 0.5rem;
+}
+.auth-btn.secondary:hover {
+  background: var(--surface-hover);
+}
+
+/* Ensure autofill fix applies here too */
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:hover,
+.input-group input:-webkit-autofill:focus,
+.input-group input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--input-text) !important;
+  background: var(--input-bg) !important;
+  transition:
+    background-color 5000s ease-in-out 0s,
+    color 5000s ease-in-out 0s;
+}

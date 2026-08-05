@@ -1,0 +1,240 @@
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  padding: 1.5rem;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(21, 94, 228, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(197, 0, 54, 0.03) 0%,
+      transparent 50%
+    );
+}
+
+.auth-card {
+  background: var(--surface);
+  border-radius: 28px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border);
+  padding: 2.25rem 1.75rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  animation: slideUp 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative accent bar at the top of the card */
+.auth-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 4px;
+  border-radius: 0 0 6px 6px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-header {
+  margin-bottom: 1.75rem;
+}
+
+.auth-logo {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 0.85rem;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.1));
+}
+
+.auth-header h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.3px;
+}
+
+.auth-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+
+
+
+
+
+
+
+.auth-error {
+  color: var(--danger);
+  font-size: 0.85rem;
+  text-align: left;
+  margin-top: -0.25rem;
+}
+
+.auth-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s,
+    box-shadow 0.2s;
+}
+
+.auth-btn:active {
+  transform: scale(0.96);
+}
+
+.auth-btn.primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 6px 18px rgba(21, 94, 228, 0.25);
+}
+
+.auth-btn.primary:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 8px 22px rgba(21, 94, 228, 0.35);
+  transform: translateY(-1px);
+}
+
+.auth-btn.primary:active {
+  transform: scale(0.97);
+}
+
+.auth-btn.google {
+  background: var(--bg);
+  color: var(--text);
+  border: 2px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.auth-btn.google:hover {
+  background: var(--surface-hover);
+  border-color: var(--text-muted);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.auth-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.auth-switch {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.auth-switch a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+
+.password-toggle {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+  z-index: 2;
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.password-toggle:hover {
+  color: var(--text);
+}
+
+
+/* Smaller icon on very narrow screens */
+@media (max-width: 360px) {
+  .password-toggle {
+    min-width: 28px;
+    min-height: 28px;
+    padding: 0.15rem;
+  }
+  .password-toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.field-error {
+  color: var(--danger);
+  font-size: 0.8rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  padding-left: 0.5rem;
+}

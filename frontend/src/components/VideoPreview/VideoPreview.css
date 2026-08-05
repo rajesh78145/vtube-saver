@@ -1,0 +1,314 @@
+/* ===== Video Preview Card (reusable, no overlay) ===== */
+.video-preview-card {
+  background: var(--surface);
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  overflow: visible;
+  position: relative;
+  animation: videoCardSlideUp 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+@keyframes videoCardSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Close button */
+.preview-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.55);
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  backdrop-filter: blur(6px);
+  transition:
+    background 0.2s,
+    transform 0.15s;
+}
+.preview-close:hover {
+  background: rgba(0, 0, 0, 0.75);
+  transform: scale(1.05);
+}
+.preview-close:active {
+  transform: scale(0.95);
+}
+
+/* Thumbnail */
+.preview-hero {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 24px 24px 0 0;
+}
+.preview-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.7) 60%);
+  padding: 2rem 1.25rem 1.1rem;
+}
+.preview-title {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+/* Meta badges */
+.preview-meta-row {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.preview-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--accent);
+  color: var(--black);
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Video / Audio toggle */
+.preview-type-toggle {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.type-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 2px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.type-btn:hover {
+  border-color: var(--primary);
+  background: var(--surface-hover);
+}
+.type-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(21, 94, 228, 0.25);
+}
+.type-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Quality section */
+.preview-quality-section {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.preview-quality-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+/* Quality Trigger */
+.quality-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.quality-trigger:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(21, 94, 228, 0.06);
+}
+.quality-trigger-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.quality-chevron {
+  transition: transform 0.25s;
+  color: var(--text-muted);
+}
+.quality-chevron.open {
+  transform: rotate(180deg);
+  color: var(--primary);
+}
+
+/* Quality Options Wrapper (animated expand) */
+.quality-options-wrapper {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    margin-top 0.35s ease;
+  margin-top: 0;
+}
+.quality-options-wrapper.open {
+  max-height: 400px;
+  opacity: 1;
+  margin-top: 0.6rem;
+}
+
+.quality-options-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-bottom: 0.25rem;
+}
+
+.quality-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    transform 0.1s;
+  width: 100%;
+}
+.quality-option:hover {
+  background: var(--surface-hover);
+  border-color: var(--primary);
+  transform: translateX(2px);
+}
+.quality-option.selected {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(21, 94, 228, 0.2);
+}
+.quality-option-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.quality-option-res {
+  font-weight: 600;
+}
+.quality-option-fps {
+  background: var(--secondary);
+  color: white;
+  padding: 0.1rem 0.45rem;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.quality-option.selected .quality-option-fps {
+  background: rgba(255, 255, 255, 0.3);
+}
+.quality-option-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.quality-option-size {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.quality-option.selected .quality-option-size {
+  color: rgba(255, 255, 255, 0.8);
+}
+.quality-check {
+  font-weight: 700;
+  color: white;
+  font-size: 1rem;
+}
+
+/* Download button */
+.preview-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background: var(--secondary);
+  color: white;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s,
+    box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(197, 0, 54, 0.25);
+}
+.preview-download-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.preview-download-btn:not(:disabled):hover {
+  background: var(--secondary-hover);
+  box-shadow: 0 6px 18px rgba(197, 0, 54, 0.35);
+  transform: translateY(-1px);
+}
+.preview-download-btn:not(:disabled):active {
+  transform: scale(0.97);
+}

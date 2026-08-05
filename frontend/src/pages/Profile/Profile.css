@@ -1,0 +1,259 @@
+.profile-page {
+  max-width: 480px;
+  margin: 1.5rem auto;
+  padding: 0 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Loading & Error */
+.profile-loading,
+.profile-error {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+}
+
+.profile-error svg {
+  color: var(--danger);
+  margin-bottom: 1rem;
+}
+
+/* ===== Base Card ===== */
+.profile-card {
+  background: var(--surface);
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Coloured top accent bar for each card */
+.user-card-accent {
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.downloads-card-accent {
+  height: 4px;
+  background: linear-gradient(90deg, var(--success), var(--primary));
+}
+
+.account-card-accent {
+  height: 4px;
+  background: linear-gradient(90deg, var(--warning), var(--secondary));
+}
+
+.app-card-accent {
+  height: 4px;
+  background: linear-gradient(90deg, #a29bfe, #6c5ce7);
+}
+
+/* Card title (used inside Downloads, Account, App cards) */
+.card-title-pp {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  padding: 1rem;
+}
+
+/* ===== User Card ===== */
+.profile-avatar-section {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  border: 3px solid var(--accent);
+  position: relative;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.profile-avatar:active {
+  transform: scale(0.96);
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-initials {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: white;
+}
+
+.avatar-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-radius: 50%;
+}
+
+.profile-avatar:hover .avatar-overlay {
+  opacity: 1;
+}
+
+.profile-avatar-section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+
+.profile-email {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-plan-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--accent);
+  color: var(--black);
+  padding: 0.25rem 0.8rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* ===== Downloads Card ===== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem 0.4rem;
+}
+
+.stat-box {
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+}
+
+.stat-box:first-child {
+  border-right: 1px solid var(--border);
+}
+
+.stat-number {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.stat-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ===== Actions List (Account & App cards) ===== */
+.actions-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 0.75rem 0.75rem;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 0.75rem;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  text-align: left;
+}
+
+.action-btn svg:first-child {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.action-btn svg:last-child {
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+.action-btn:hover {
+  background: var(--surface-hover);
+}
+
+.action-btn.logout {
+  color: var(--danger);
+}
+
+.action-btn.logout svg:first-child {
+  color: var(--danger);
+}
+
+.action-btn.logout:hover {
+  background: var(--danger);
+  color: white;
+}
+
+.action-btn.logout:hover svg {
+  color: white;
+}
+
+/* ===== Toast ===== */
+.toast-success {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--success);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: toastUp 0.3s ease;
+}
+
+@keyframes toastUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

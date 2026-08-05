@@ -1,0 +1,269 @@
+.downloads-page {
+  max-width: 680px;
+  margin: 1.5rem auto;
+  padding: 0 1rem 2rem;
+}
+
+.page-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+}
+
+.loading,
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+}
+
+.empty-state svg {
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.error-banner {
+  background: var(--danger);
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+/* ===== History List ===== */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+/* Card wrapper */
+.history-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 150px; /* increased for two badge rows */
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.history-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark overlay – stronger for readability */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.82) 100%
+  );
+  z-index: 1;
+}
+
+/* Content sits above overlay */
+.card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.85rem 0.9rem;
+  color: white;
+}
+
+/* Title row (title + delete button) */
+.card-top-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  flex: 1;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  /* dark pill behind title for maximum readability */
+  /* background: rgba(0, 0, 0, 0.6); */
+  padding: 0.2rem 0.45rem;
+  border-radius: 6px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  color: #ffffff;
+}
+
+/* Delete / Cancel button */
+.card-action-btn {
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem;
+  cursor: pointer;
+  color: white;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-action-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+.card-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Badge rows – two rows of two badges each */
+.badge-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+}
+
+.badge-row {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(4px);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+}
+
+/* Bottom row (date + size) */
+.card-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.card-date {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.card-size {
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+  color: white;
+}
+
+/* ===== Progress bar (for active downloads) ===== */
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.progress-size {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== Responsive ===== */
+@media (min-width: 768px) {
+  .history-card {
+    min-height: 130px;
+  }
+  .card-content {
+    padding: 0.75rem 1rem;
+  }
+  .card-title {
+    font-size: 1rem;
+  }
+}
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.75rem;
+  color: var(--text);
+}
+.empty-state-btn {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  background: var(--primary);
+  color: white;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+}
+
+.empty-state-btn:hover {
+  background: var(--primary-hover);
+}
+
+.empty-state-btn:active {
+  transform: scale(0.96);
+}
