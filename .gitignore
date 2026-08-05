@@ -21,7 +21,7 @@ pnpm-debug.log*
 # Temporary files
 temp/
 downloads/
-
+backend/cookies.txt
 # Coverage
 coverage/
 

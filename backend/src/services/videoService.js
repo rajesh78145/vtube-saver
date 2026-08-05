@@ -57,6 +57,7 @@ const getInfo = async (url) => {
       dumpSingleJson: true,
       noWarnings: true,
       noCheckCertificate: true,
+      cookies: path.join(process.cwd(), "cookies.txt"),
     });
 
     const allFormats = info.formats || [];
@@ -227,8 +228,8 @@ const download = async (url, formatId, downloadId, userId, onProgress) => {
     mergeOutputFormat: "mp4",
     noWarnings: true,
     noCheckCertificate: true,
+    cookies: path.join(process.cwd(), "cookies.txt"),
   };
-
   const subprocess = ytDlp.exec(url, ytOpts);
   activeDownloads.set(downloadId, subprocess);
   let lastPercent = -1;
