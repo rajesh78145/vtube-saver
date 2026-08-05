@@ -28,13 +28,6 @@ export const useGoogleAuth = (onResponse) => {
   }, [onResponse]);
 
   const triggerGoogleLogin = useCallback(() => {
-    if (!isLocalhost()) {
-      alert(
-        "Google login is only available on localhost during development.\n\nUse email/password to login from this device.",
-      );
-      return;
-    }
-
     if (!window.google) {
       alert("Google sign-in is loading, please try again in a moment.");
       return;
@@ -44,6 +37,7 @@ export const useGoogleAuth = (onResponse) => {
       client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
       callback: (response) => callbackRef.current?.(response),
     });
+
     window.google.accounts.id.prompt();
   }, []);
 
