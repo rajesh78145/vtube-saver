@@ -53,6 +53,15 @@ const getInfo = async (url) => {
   if (cached) return cached;
 
   try {
+    const cookiePath = path.join(process.cwd(), "cookies.txt");
+
+    console.log("CWD:", process.cwd());
+    console.log("Cookie path:", cookiePath);
+    console.log("Cookie exists:", fs.existsSync(cookiePath));
+
+    if (fs.existsSync(cookiePath)) {
+      console.log("Cookie size:", fs.statSync(cookiePath).size);
+    }
     const info = await ytDlp(url, {
       dumpSingleJson: true,
       noWarnings: true,
