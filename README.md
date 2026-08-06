@@ -207,7 +207,7 @@ VITE_API_URL=https://your-render-backend.onrender.com/api
 ### Home-top
 ![Home-top](screenshots/home-top-v2.png)
 
-### Home-top
+### Home-bottom
 ![Home-bottom](screenshots/home-bottom-v2.png)
 
 ### Download
