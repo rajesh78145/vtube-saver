@@ -1,5 +1,14 @@
 # 🎬 VTube Saver
 
+<p align="center">
+
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js)
+![Supabase](https://img.shields.io/badge/Database-Supabase-3ECF8E?logo=supabase)
+![Vite](https://img.shields.io/badge/Vite-Frontend-646CFF?logo=vite)
+![License](https://img.shields.io/badge/License-MIT-blue)
+
+</p>
 A modern full-stack video downloader built with **React**, **Node.js**, **Express**, and **Supabase PostgreSQL**. VTube Saver provides a clean interface for fetching video information, managing user accounts, enforcing download limits, and maintaining download history through a subscription-based plan system.
 
 > **Note:** This project is developed for learning and demonstration purposes. Payment integration is intentionally **not included**. Users can switch between plans directly from the application to demonstrate plan-based download restrictions.
@@ -8,22 +17,32 @@ A modern full-stack video downloader built with **React**, **Node.js**, **Expres
 
 # ✨ Features
 
+## 🎥 Supported Platforms
+
+- YouTube
+- Instagram
+- Facebook
+- TikTok
+- X (Twitter)
+- Vimeo
+- And many more supported by yt-dlp
+
 ## 👤 User Authentication
 
-* Secure user registration
-* Login with JWT authentication
-* Protected API routes
-* User profile management
+- Secure user registration
+- Login with JWT authentication
+- Protected API routes
+- User profile management
 
 ---
 
 ## 📥 Video Downloader
 
-* Fetch video information from supported platforms
-* Display thumbnail, title, duration, and available formats
-* Download videos according to the user's plan limits
-* Download progress tracking
-* Automatic download history
+- Fetch video information from supported platforms
+- Display thumbnail, title, duration, and available formats
+- Download videos according to the user's plan limits
+- Download progress tracking
+- Automatic download history
 
 ---
 
@@ -52,14 +71,14 @@ The system automatically records every successful download.
 
 Each download stores:
 
-* Video title
-* Platform
-* Thumbnail
-* Quality
-* Duration
-* Download date
-* User information
-* Selected plan
+- Video title
+- Platform
+- Thumbnail
+- Quality
+- Duration
+- Download date
+- User information
+- Selected plan
 
 Users can view all previous downloads from the **Downloads** section inside their profile.
 
@@ -69,11 +88,11 @@ Users can view all previous downloads from the **Downloads** section inside thei
 
 The backend controls all download permissions.
 
-* Free users can download **1 video per day**
-* Premium users receive higher daily download limits
-* Daily limits automatically reset every day
-* Users cannot bypass limits from the frontend
-* All validations are performed on the server
+- Free users can download **1 video per day**
+- Premium users receive higher daily download limits
+- Daily limits automatically reset every day
+- Users cannot bypass limits from the frontend
+- All validations are performed on the server
 
 ---
 
@@ -81,31 +100,31 @@ The backend controls all download permissions.
 
 ## Frontend
 
-* React 19
-* Vite
-* React Router
-* Axios
-* CSS
-* React Icons
+- React 19
+- Vite
+- React Router
+- Axios
+- CSS
+- React Icons
 
 ## Backend
 
-* Node.js
-* Express.js
-* JWT Authentication
-* bcrypt
-* Multer
-* yt-dlp
-* FFmpeg
+- Node.js
+- Express.js
+- JWT Authentication
+- bcrypt
+- Multer
+- yt-dlp
+- FFmpeg
 
 ## Database
 
-* Supabase PostgreSQL
+- Supabase PostgreSQL
 
 ## Deployment
 
-* Frontend → Vercel
-* Backend → Render
+- Frontend → Vercel
+- Backend → Render
 
 ---
 
@@ -204,26 +223,50 @@ VITE_API_URL=https://your-render-backend.onrender.com/api
 
 ## 📸 Screenshots
 
-### Home-top
-![Home-top](screenshots/home-top-v2.png)
+<table align="center">
+<tr>
+<td align="center">
+<b>🏠 Home (Top)</b><br>
+<img src="screenshots/home-top-v2.png" width="420">
+</td>
 
-### Home-bottom
-![Home-bottom](screenshots/home-bottom-v2.png)
+<td align="center">
+<b>🏠 Home (Bottom)</b><br>
+<img src="screenshots/home-bottom-v2.png" width="420">
+</td>
+</tr>
 
-### Download
-![Download](screenshots/download.png)
+<tr>
+<td align="center">
+<b>📥 Download</b><br>
+<img src="screenshots/download.png" width="420">
+</td>
 
-### Plans
-![Plans](screenshots/plans.png)
+<td align="center">
+<b>💎 Plans</b><br>
+<img src="screenshots/plans.png" width="420">
+</td>
+</tr>
 
-### Profile
-![Profile](screenshots/profile.png)
+<tr>
+<td align="center">
+<b>👤 Profile</b><br>
+<img src="screenshots/profile.png" width="420">
+</td>
 
-### Login
-![Login](screenshots/login.png)
+<td align="center">
+<b>🔐 Login</b><br>
+<img src="screenshots/login.png" width="420">
+</td>
+</tr>
 
-### Download History
-![Register](screenshots/register.png)
+<tr>
+<td align="center" colspan="2">
+<b>📜 Register</b><br>
+<img src="screenshots/register.png" width="850">
+</td>
+</tr>
+</table>
 
 ---
 
@@ -231,15 +274,15 @@ VITE_API_URL=https://your-render-backend.onrender.com/api
 
 This project demonstrates:
 
-* Full Stack Development
-* REST API Design
-* Authentication with JWT
-* PostgreSQL Database Design
-* User Role Management
-* Download History Management
-* Plan-Based Access Control
-* Daily Download Limit Logic
-* Frontend and Backend Deployment
+- Full Stack Development
+- REST API Design
+- Authentication with JWT
+- PostgreSQL Database Design
+- User Role Management
+- Download History Management
+- Plan-Based Access Control
+- Daily Download Limit Logic
+- Frontend and Backend Deployment
 
 ---
 
