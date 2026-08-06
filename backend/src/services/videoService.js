@@ -88,8 +88,6 @@ const getInfo = async (url) => {
         "--dump-single-json",
         "--no-warnings",
         "--no-check-certificate",
-        "--cookies",
-        cookiePath,
         "--extractor-args",
         "youtube:player_client=android",
       ],
@@ -273,7 +271,6 @@ const download = async (url, formatId, downloadId, userId, onProgress) => {
     mergeOutputFormat: "mp4",
     noWarnings: true,
     noCheckCertificate: true,
-    cookies: path.join(process.cwd(), "cookies.txt"),
   };
   const subprocess = ytDlp.exec(url, ytOpts);
   activeDownloads.set(downloadId, subprocess);
