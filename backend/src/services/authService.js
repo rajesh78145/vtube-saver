@@ -174,16 +174,32 @@ const login = async (email, password) => {
 
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
-const googleLogin = async (credential) => {
-  const ticket = await googleClient.verifyIdToken({
-    idToken: credential,
-    audience:
-      process.env.NODE_ENV === "production"
-        ? process.env.GOOGLE_CLIENT_ID
-        : undefined,
-  });
-  const payload = ticket.getPayload();
-  const { email, name, picture } = payload;
+const googleLogin = async (accessToken) => {
+  // Get user information from Google using the access token
+  const response = await fetch(
+    "https://www.googleapis.com/oauth2/v3/userinfo",
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    },
+  );
+
+  if (!response.ok) {
+    throw Object.assign(new Error("Invalid Google access token"), {
+      status: 401,
+    });
+  }
+
+  const payload = await response.json();
+
+  const { email, name, picture, email_verified } = payload;
+
+  if (!email || !email_verified) {
+    throw Object.assign(new Error("Google account not verified"), {
+      status: 401,
+    });
+  }
 
   let { data: user } = await supabase
     .from("users")
@@ -207,6 +223,7 @@ const googleLogin = async (credential) => {
       .single();
 
     if (error) throw error;
+
     user = newUser;
 
     const { data: freePlan } = await supabase
@@ -214,22 +231,31 @@ const googleLogin = async (credential) => {
       .select("id")
       .eq("name", "Free")
       .single();
+
     if (freePlan) {
       await supabase
         .from("users")
-        .update({ plan_id: freePlan.id })
+        .update({
+          plan_id: freePlan.id,
+        })
         .eq("id", user.id);
     }
   } else if (user.provider !== "google") {
     throw Object.assign(
       new Error(
-        "Email already registered with password. Please login with email.",
+        "Email already registered with password. Please login using email.",
       ),
-      { status: 409 },
+      {
+        status: 409,
+      },
     );
   }
 
-  const token = generateToken({ id: user.id, email: user.email });
+  const token = generateToken({
+    id: user.id,
+    email: user.email,
+  });
+
   return {
     token,
     user: {

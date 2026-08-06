@@ -42,9 +42,14 @@ const login = async (req, res, next) => {
 
 const googleLogin = async (req, res, next) => {
   try {
-    const { credential } = req.body;
-    const result = await authService.googleLogin(credential);
-    res.json({ success: true, data: result });
+    const { accessToken } = req.body;
+
+    const result = await authService.googleLogin(accessToken);
+
+    res.json({
+      success: true,
+      data: result,
+    });
   } catch (err) {
     next(err);
   }

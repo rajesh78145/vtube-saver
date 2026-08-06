@@ -66,15 +66,16 @@ const Login = () => {
   };
 
   const handleGoogleResponse = useCallback(
-    async (response) => {
-      const { credential } = response;
+    async ({ accessToken }) => {
       setLoading(true);
+
       try {
         const res = await api.post("/auth/google", {
-          credential,
-          isAccessToken: response.isAccessToken || false,
+          accessToken,
         });
+
         const { token, user } = res.data.data;
+
         login(token, user);
         addToast("Login successful", "success");
         navigate("/");

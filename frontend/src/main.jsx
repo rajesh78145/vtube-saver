@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext";
 import { AuthProvider } from "./context/AuthContext";
 import { ActiveDownloadsProvider } from "./context/ActiveDownloadsContext";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import { ToastProvider } from "./context/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import App from "./App";
@@ -19,7 +20,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <ActiveDownloadsProvider>
             <ToastProvider>
               <ErrorBoundary>
-                <App />
+                <GoogleOAuthProvider
+                  clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
+                >
+                  <App />
+                </GoogleOAuthProvider>
               </ErrorBoundary>
             </ToastProvider>
           </ActiveDownloadsProvider>
