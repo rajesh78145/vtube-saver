@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, LogIn, Eye, EyeOff, X } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { useToast } from "../../context/ToastContext";
-import { GoogleLogin } from "@react-oauth/google";
 import { FaGoogle } from "react-icons/fa";
 import { useGoogleAuth } from "../../hooks/useGoogleAuth";
 import api from "../../services/api";
@@ -15,7 +14,6 @@ const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
   const { addToast } = useToast();
-  const { triggerGoogleLogin } = useGoogleAuth(handleGoogleResponse);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -94,7 +92,7 @@ const Login = () => {
     },
     [login, navigate, addToast],
   );
-
+  const { triggerGoogleLogin } = useGoogleAuth(handleGoogleResponse);
   return (
     <div className="auth-page">
       <div className="auth-card">
