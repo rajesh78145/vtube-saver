@@ -6,9 +6,20 @@ const routes = require("./routes");
 
 const app = express();
 
-app.use(cors({ origin: "https://vtube-saver.vercel.app", credentials: true }));
+// Allow all Vercel domains (production + preview)
+const allowedOrigins = [
+  "https://vtube-saver.vercel.app",
+  /^https:\/\/vtube-saver-.*\.vercel\.app$/,
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  }),
+);
 app.use(express.json());
-app.options('*', cors());
+app.options("*", cors({ origin: allowedOrigins, credentials: true }));
 app.use(morgan("dev"));
 
 app.use("/api", routes);
