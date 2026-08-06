@@ -4,7 +4,6 @@ const { OAuth2Client } = require("google-auth-library");
 const supabase = require("../config/supabase");
 const logger = require("../utils/logger");
 const { sendOTP } = require("../utils/sendEmail");
-const fetch = require("node-fetch");
 
 const generateToken = (user) => {
   return jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, {
