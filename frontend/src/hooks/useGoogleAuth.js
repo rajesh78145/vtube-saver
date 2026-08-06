@@ -1,25 +1,51 @@
-import { useGoogleLogin } from "@react-oauth/google";
-import { useCallback } from "react";
+import { useEffect, useCallback } from "react";
+
+const callbackRef = { current: null };
+
+const loadScript = () => {
+  if (document.getElementById("google-identity-sdk")) return;
+
+  const script = document.createElement("script");
+  script.src = "https://accounts.google.com/gsi/client";
+  script.id = "google-identity-sdk";
+  script.async = true;
+
+  script.onload = () => {
+    if (window.google) {
+      window.google.accounts.id.initialize({
+        client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+        callback: (response) => callbackRef.current?.(response),
+        use_fedcm_for_prompt: false,
+        auto_select: false,
+      });
+    }
+  };
+
+  document.head.appendChild(script);
+};
+
+loadScript();
 
 export const useGoogleAuth = (onResponse) => {
-  const login = useGoogleLogin({
-    flow: "implicit",
-
-    onSuccess: (tokenResponse) => {
-      onResponse({
-        credential: tokenResponse.access_token,
-        isAccessToken: true,
-      });
-    },
-
-    onError: () => {
-      console.error("Google Login Failed");
-    },
-  });
+  useEffect(() => {
+    callbackRef.current = onResponse;
+  }, [onResponse]);
 
   const triggerGoogleLogin = useCallback(() => {
-    login();
-  }, [login]);
+    if (!window.google) {
+      alert("Google Sign-In is still loading.");
+      return;
+    }
+
+    window.google.accounts.id.initialize({
+      client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+      callback: (response) => callbackRef.current?.(response),
+      use_fedcm_for_prompt: false,
+      auto_select: false,
+    });
+
+    window.google.accounts.id.prompt();
+  }, []);
 
   return { triggerGoogleLogin };
 };
