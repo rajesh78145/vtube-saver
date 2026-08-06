@@ -23,6 +23,8 @@ const loadScript = () => {
 loadScript();
 
 export const useGoogleAuth = (onResponse) => {
+  console.log("Google Client ID:", import.meta.env.VITE_GOOGLE_CLIENT_ID);
+
   useEffect(() => {
     callbackRef.current = onResponse;
   }, [onResponse]);
