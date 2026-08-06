@@ -4,6 +4,8 @@ import { Mail, Lock, LogIn, Eye, EyeOff, X } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { useToast } from "../../context/ToastContext";
 import { GoogleLogin } from "@react-oauth/google";
+import { FaGoogle } from "react-icons/fa";
+import { useGoogleAuth } from "../../hooks/useGoogleAuth";
 import api from "../../services/api";
 import Dialog from "../../components/Dialog/Dialog";
 import "../Register/Register.css"; // if not already imported
@@ -13,6 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
   const { addToast } = useToast();
+  const { triggerGoogleLogin } = useGoogleAuth(handleGoogleResponse);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -21,7 +24,6 @@ const Login = () => {
   const [fieldErrors, setFieldErrors] = useState({ email: "", password: "" });
   const [showInvalidLogin, setShowInvalidLogin] = useState(false);
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
-
   const validateForm = () => {
     const errors = { email: "", password: "" };
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -170,13 +172,14 @@ const Login = () => {
           <span>or</span>
         </div>
 
-        <div className="google-login-wrapper">
-          <GoogleLogin
-            onSuccess={handleGoogleResponse}
-            onError={() => setError("Google login failed")}
-            useOneTap={false}
-          />
-        </div>
+        <button
+          type="button"
+          className="auth-btn google"
+          onClick={triggerGoogleLogin}
+        >
+          <FaGoogle size={18} />
+          Continue with Google
+        </button>
 
         <p className="auth-switch">
           Don't have an account? <Link to="/register">Register</Link>
