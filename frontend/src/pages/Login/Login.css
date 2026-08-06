@@ -86,13 +86,6 @@
   margin-bottom: 1.5rem;
 }
 
-
-
-
-
-
-
-
 .auth-error {
   color: var(--danger);
   font-size: 0.85rem;
@@ -192,7 +185,6 @@
   text-decoration: underline;
 }
 
-
 .password-toggle {
   position: absolute;
   right: 0.75rem;
@@ -216,7 +208,6 @@
   color: var(--text);
 }
 
-
 /* Smaller icon on very narrow screens */
 @media (max-width: 360px) {
   .password-toggle {
@@ -237,4 +228,18 @@
   margin-bottom: 0.5rem;
   text-align: left;
   padding-left: 0.5rem;
+}
+.google-login-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.google-login-wrapper > div {
+  width: 100%;
+}
+
+.google-login-wrapper iframe {
+  width: 100% !important;
+  border-radius: 12px;
 }

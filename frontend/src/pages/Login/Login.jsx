@@ -1,10 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, LogIn, Eye, EyeOff, X } from "lucide-react";
-import { FaGoogle } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 import { useToast } from "../../context/ToastContext";
-import { useGoogleAuth } from "../../hooks/useGoogleAuth";
+import { GoogleLogin } from "@react-oauth/google";
 import api from "../../services/api";
 import Dialog from "../../components/Dialog/Dialog";
 import "../Register/Register.css"; // if not already imported
@@ -93,7 +92,7 @@ const Login = () => {
     },
     [login, navigate, addToast],
   );
-  const { triggerGoogleLogin } = useGoogleAuth(handleGoogleResponse);
+
   return (
     <div className="auth-page">
       <div className="auth-card">
@@ -171,9 +170,13 @@ const Login = () => {
           <span>or</span>
         </div>
 
-        <button className="auth-btn google" onClick={triggerGoogleLogin}>
-          <FaGoogle size={18} /> Continue with Google
-        </button>
+        <div className="google-login-wrapper">
+          <GoogleLogin
+            onSuccess={handleGoogleResponse}
+            onError={() => setError("Google login failed")}
+            useOneTap={false}
+          />
+        </div>
 
         <p className="auth-switch">
           Don't have an account? <Link to="/register">Register</Link>
