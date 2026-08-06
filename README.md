@@ -202,17 +202,28 @@ VITE_API_URL=https://your-render-backend.onrender.com/api
 
 ---
 
-# 📸 Screenshots
+## 📸 Screenshots
 
-Add screenshots here.
+### Home-top
+![Home-top](screenshots/home-top.png)
 
-* Home Page
-* Login
-* Register
-* Profile
-* Plans
-* Download Page
-* Download History
+### Home-top
+![Home-bottom](screenshots/home-bottom.png)
+
+### Download
+![Download](screenshots/download.png)
+
+### Plans
+![Plans](screenshots/plans.png)
+
+### Profile
+![Profile](screenshots/profile.png)
+
+### Login
+![Login](screenshots/login.png)
+
+### Download History
+![Register](screenshots/register.png)
 
 ---
 
