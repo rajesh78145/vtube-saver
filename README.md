@@ -15,6 +15,18 @@ A modern full-stack video downloader built with **React**, **Node.js**, **Expres
 
 ---
 
+## 🌐 Live Demo
+
+Try the application using the links below:
+
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Vercel-000?style=for-the-badge)](https://vtube-saver.vercel.app)
+
+> **Demo Note**
+>
+> - Payment integration is **not included** in this project.
+> - Plan upgrades are available directly from the **Plans** page for demonstration purposes.
+> - The application showcases authentication, plan-based download limits, and download history management.
+
 # ✨ Features
 
 ## 🎥 Supported Platforms
