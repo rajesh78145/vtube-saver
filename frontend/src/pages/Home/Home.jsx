@@ -241,7 +241,7 @@ const Home = () => {
         <div className="dialog-icon" style={{ background: "var(--danger)" }}>
           <X size={32} color="white" />
         </div>
-        <h2 className="dialog-title">Invalid Link</h2>
+        <h2 className="dialog-title">Failed to Fetch Video</h2>
         <p className="dialog-message">{fetchErrorMessage}</p>
         <button
           className="dialog-action-btn"
