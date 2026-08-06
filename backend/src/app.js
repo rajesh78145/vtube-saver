@@ -6,8 +6,9 @@ const routes = require("./routes");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: "https://vtube-saver.vercel.app", credentials: true }));
 app.use(express.json());
+app.options('*', cors());
 app.use(morgan("dev"));
 
 app.use("/api", routes);
